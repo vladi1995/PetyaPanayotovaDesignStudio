@@ -25,7 +25,7 @@ const Home = () => {
                     </div>
                 </div>
                 <p className="u-text u-text-default u-text-4">250лв.</p><span className="u-file-icon u-icon u-icon-1">
-                    <img src="./images/845665.png" alt="" /></span>
+                    <img src="/images/845665.png" alt="" /></span>
             </div>
         </section>
     );
