@@ -1,7 +1,11 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from "../../contexts/AuthContext";
+import * as authService from "../../services/authService";
 
 const Login = () => {
+    const { userLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [value, setValue] = useState({
         email: '',
         password: '',
@@ -16,6 +20,14 @@ const Login = () => {
 
     const submitLoginHandler = (e) => {
         e.preventDefault();
+        authService.login(value.email, value.password)
+            .then(authData => {
+                userLogin(authData);
+                navigate('/');
+            })
+            .catch(() => {
+                navigate('/');
+            });
     };
 
     return (
@@ -24,7 +36,7 @@ const Login = () => {
                 <h2 className="u-text u-text-default u-text-1">Вход в системата</h2>
                 <div className="u-form u-form-1">
                     <form onSubmit={submitLoginHandler} action="https://forms.nicepagesrv.com/v2/form/process"
-                        className="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style={{"padding": " 10px"}} source="email"
+                        className="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style={{ "padding": " 10px" }} source="email"
                         name="form">
                         <div className="u-form-group u-form-name u-label-top">
                             <label for="name-3b9a" className="u-label">Email:</label>
@@ -33,7 +45,7 @@ const Login = () => {
                         </div>
                         <div className="u-form-group u-label-top">
                             <label for="email-3b9a" className="u-label">Парола:</label>
-                            <input onChange={onChange} value={value.password} type="text" placeholder="Въведете парола" id="email-3b9a" name="password"
+                            <input onChange={onChange} value={value.password} type="password" placeholder="Въведете парола" id="email-3b9a" name="password"
                                 className="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-2"
                                 required="required" />
                         </div>

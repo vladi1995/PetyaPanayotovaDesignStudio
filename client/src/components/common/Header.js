@@ -1,6 +1,10 @@
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <header className="u-clearfix u-header u-palette-1-light-2 u-sticky u-sticky-ee31 u-header" id="sec-b022">
             <nav className="u-align-center u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -42,14 +46,26 @@ const Header = () => {
             <nav className="u-menu u-menu-dropdown u-offcanvas u-menu-2">
                 <div className="u-custom-menu u-nav-container">
                     <ul className="u-nav u-spacing-0 u-unstyled u-nav-3">
-                        <li className="u-nav-item"><NavLink
-                            className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                            to="/auth/login" style={{ padding: '0px 20px' }}>Вход</NavLink>
-                        </li>
-                        <li className="u-nav-item"><NavLink
-                            className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                            to="/auth/register" style={{ padding: '0px 20px' }}>Регистрация</NavLink>
-                        </li>
+                        {user.email ?
+                            <li className="u-nav-item">
+                                <NavLink
+                                    className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
+                                    to="/auth/logout" style={{ padding: '0px 20px' }}>Изход</NavLink>
+                            </li>
+                            :
+                            <>
+                                <li className="u-nav-item">
+                                    <NavLink
+                                        className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
+                                        to="/auth/login" style={{ padding: '0px 20px' }}>Вход</NavLink>
+                                </li>
+                                <li className="u-nav-item">
+                                    <NavLink
+                                        className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
+                                        to="/auth/register" style={{ padding: '0px 20px' }}>Регистрация</NavLink>
+                                </li>
+                            </>
+                        }
                     </ul>
                 </div>
             </nav>
