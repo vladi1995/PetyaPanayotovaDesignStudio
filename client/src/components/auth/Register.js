@@ -1,9 +1,15 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import * as authService from '../../services/authService';
+
 import styles from './Auth.module.css';
 
 const Register = () => {
+    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
+    const {userLogin} = useContext(AuthContext);
 
     const [values, setValues] = useState({
         email: '',
@@ -24,7 +30,14 @@ const Register = () => {
 
     const submitLoginHandler = (e) => {
         e.preventDefault();
-        console.log(values);
+        
+        authService.register(values.email, values.password, values.firstName, values.lastName, values.profileImageUrl, values.budget)
+        .then(authData => {
+            userLogin(authData);
+            navigate('/');
+        }).catch(() => {
+            navigate('/');
+        });
     };
 
     const validateEmail = (e, bound) => {
