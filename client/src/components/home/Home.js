@@ -8,10 +8,7 @@ const Home = () => {
     return (
         <section className="u-clearfix u-grey-5 u-section-1" id="sec-92f0">
             <div className="u-clearfix u-sheet u-sheet-1">
-                {user.email && <p className="u-text u-text-default u-text-1">{user.email}, {user.budget || 0} лв.</p>}
-          
                 <div className="u-clearfix u-expanded-width u-gutter-12 u-layout-wrap u-layout-wrap-1">
-
                     <div className="u-layout">
                         <div className="u-layout-row">
                             <div className="u-container-style u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-layout-cell-1" src="">

@@ -35,28 +35,41 @@ const Login = () => {
             <div className="u-clearfix u-sheet u-sheet-1">
                 <h2 className="u-text u-text-default u-text-1">Вход в системата</h2>
                 <div className="u-form u-form-1">
-                    <form onSubmit={submitLoginHandler} action="https://forms.nicepagesrv.com/v2/form/process"
-                        className="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style={{ "padding": " 10px" }} source="email"
-                        name="form">
+                    <form
+                        onSubmit={submitLoginHandler}
+                        className="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+                        style={{ "padding": " 10px" }}
+                        source="email"
+                        name="form"
+                    >
                         <div className="u-form-group u-form-name u-label-top">
                             <label for="name-3b9a" className="u-label">Email:</label>
-                            <input onChange={onChange} value={value.email} type="text" placeholder="Въведете email" id="name-3b9a" name="email"
-                                className="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-1" required="" />
+                            <input
+                                onChange={onChange}
+                                value={value.email}
+                                type="text"
+                                placeholder="Въведете email"
+                                id="name-3b9a"
+                                name="email"
+                                className="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-1"
+                                required="required"
+                            />
                         </div>
                         <div className="u-form-group u-label-top">
                             <label for="email-3b9a" className="u-label">Парола:</label>
-                            <input onChange={onChange} value={value.password} type="password" placeholder="Въведете парола" id="email-3b9a" name="password"
+                            <input
+                                onChange={onChange}
+                                value={value.password}
+                                type="password"
+                                placeholder="Въведете парола"
+                                id="email-3b9a"
+                                name="password"
                                 className="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-2"
                                 required="required" />
                         </div>
                         <div className="u-align-left u-form-group u-form-submit u-label-top">
                             <input type="submit" value="Вход" className="u-btn u-btn-submit u-button-style" />
                         </div>
-                        <div className="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-                        <div className="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try
-                            again. </div>
-                        <input type="hidden" value="" name="recaptchaResponse" />
-                        <input type="hidden" name="formServices" value="2dbdbb5f5f57a7961aaa0e0a2491c934" />
                     </form>
                 </div>
                 <p className="u-text u-text-default u-text-2">Нямате все още акаунт?</p>
