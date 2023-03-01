@@ -18,10 +18,39 @@ const request = async (method, url, data) => {
         }
 
         const response = await fetch(url, options);
-        const responseData = await response.json();
-        return responseData;
+
+
+        // try {
+        //     if (response.ok == false) {
+        //         if (response.status == 403) {
+        //             clearUserData();
+        //         }
+        //         const error = await response.json();
+        //         throw new Error(error.message);
+        //     }
+    
+        //     if (response.status == 204) {
+        //         return response;
+        //     } else {
+        //         return response.json();
+        //     }
+        // } catch (err) {
+        //     alert(err.message);
+        //     throw err;
+        // }
+
+        if (response.ok === false) {
+            const error = await response.json();
+            throw new Error(error.message);
+        }
+
+        if (response.status === 204) {
+            return response;
+        } else {
+            return response.json();
+        }
     } catch (error) {
-        console.log(error);
+        throw error;
     }
 };
 

@@ -4,11 +4,11 @@ const baseUrl = 'http://localhost:3030/users';
 
 export const login = (email, password) => {
     return request.post(`${baseUrl}/login`, { email, password });
-}
+};
 
 export const register = (email, password, firstName, lastName, profileImageUrl, budget) => {
     return request.post(`${baseUrl}/register`, { email, password, firstName, lastName, profileImageUrl, budget });
-}
+};
 
 export const logout = async (accessToken) => {
     try {
@@ -22,5 +22,5 @@ export const logout = async (accessToken) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 

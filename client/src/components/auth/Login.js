@@ -5,6 +5,8 @@ import * as authService from "../../services/authService";
 
 const Login = () => {
     const { userLogin } = useContext(AuthContext);
+    const [error, setError] = useState(false);
+
     const navigate = useNavigate();
     const [value, setValue] = useState({
         email: '',
@@ -20,13 +22,14 @@ const Login = () => {
 
     const submitLoginHandler = (e) => {
         e.preventDefault();
+
         authService.login(value.email, value.password)
             .then(authData => {
                 userLogin(authData);
                 navigate('/');
             })
             .catch(() => {
-                navigate('/');
+                setError(state => state = true);
             });
     };
 
@@ -43,7 +46,7 @@ const Login = () => {
                         name="form"
                     >
                         <div className="u-form-group u-form-name u-label-top">
-                            <label for="name-3b9a" className="u-label">Email:</label>
+                            <label htmlFor="name-3b9a" className="u-label">Email:</label>
                             <input
                                 onChange={onChange}
                                 value={value.email}
@@ -56,7 +59,7 @@ const Login = () => {
                             />
                         </div>
                         <div className="u-form-group u-label-top">
-                            <label for="email-3b9a" className="u-label">Парола:</label>
+                            <label htmlFor="email-3b9a" className="u-label">Парола:</label>
                             <input
                                 onChange={onChange}
                                 value={value.password}
@@ -66,7 +69,10 @@ const Login = () => {
                                 name="password"
                                 className="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-2"
                                 required="required" />
+                            {error && <span> /Потребителското име или паролата не са верни!/</span>}
                         </div>
+
+
                         <div className="u-align-left u-form-group u-form-submit u-label-top">
                             <input type="submit" value="Вход" className="u-btn u-btn-submit u-button-style" />
                         </div>

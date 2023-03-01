@@ -23,5 +23,5 @@ export const AuthProvider = ({
         isAuthenticated: !!auth.accessToken,
     }}>
         {children}
-    </AuthContext.Provider>
+    </AuthContext.Provider>;
 };
