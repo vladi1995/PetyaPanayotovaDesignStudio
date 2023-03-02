@@ -90,7 +90,7 @@ const Register = () => {
                             <label htmlFor="name-3b9a" className="u-label">Email:</label>
 
                             <input
-                                onBlur={(e) => validateEmail(e, 3)}
+                                onBlur={(e) => validateEmail(e, 5)}
                                 onChange={onChange} value={values.email}
                                 type="text"
                                 placeholder="Въведете email"
@@ -103,14 +103,14 @@ const Register = () => {
                                 }
                                 required="required"
                             />
-                            {errors.email && <span>/Email трябва да е поне 5 символа и да е във формат/</span>}
+                            {errors.email && <span>/Email трябва да е поне 5 символа и да е във формат name@domain.extension/</span>}
                         </div>
 
                         <div className="u-form-group u-label-top">
                             <label htmlFor="email-3b9a" className="u-label">Име:</label>
 
                             <input
-                                onBlur={(e) => validateField(e, 3)}
+                                onBlur={(e) => validateField(e, 5)}
                                 onChange={onChange}
                                 value={values.firstName}
                                 type="text"
@@ -130,7 +130,7 @@ const Register = () => {
                             <label htmlFor="text-f937" className="u-label">Фамилия:</label>
 
                             <input
-                                onBlur={(e) => validateField(e, 3)}
+                                onBlur={(e) => validateField(e, 5)}
                                 onChange={onChange}
                                 value={values.lastName}
                                 type="text"
@@ -150,7 +150,7 @@ const Register = () => {
                             <label htmlFor="text-d5ae" className="u-label">Парола:</label>
 
                             <input
-                                onBlur={(e) => validateField(e, 3)}
+                                onBlur={(e) => validateField(e, 5)}
                                 onChange={onChange}
                                 value={values.password}
                                 type="password"

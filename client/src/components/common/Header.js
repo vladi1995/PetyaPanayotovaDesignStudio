@@ -33,9 +33,13 @@ const Header = () => {
                             className="u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
                             href="Search.html" style={{ padding: '10px 0px' }}>ТЪРСЕНЕ</a>
                         </li>
-                        <li className="u-nav-item"><a href="About.html"
+                        <li className="u-nav-item"><NavLink to="/about"
                             className="u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
-                            style={{ padding: '10px 0px' }}>ЗА СТРАНИЦАТА</a>
+                            style={{ padding: '10px 0px' }}>ЗА СТРАНИЦАТА</NavLink>
+                        </li>
+                        <li className="u-nav-item"><NavLink to="/cards/create"
+                            className="u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
+                            style={{ padding: '10px 0px' }}>СЪЗДАВАНЕ</NavLink>
                         </li>
                     </ul>
                 </div>
