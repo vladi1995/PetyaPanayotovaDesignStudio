@@ -9,7 +9,7 @@ const About = () => {
                                 <div className="u-container-layout u-container-layout-1">
                                     <h2 className="u-align-center u-text u-text-default u-text-1">За страницата</h2>
                                     <p className="u-align-left u-text u-text-2">
-                                        <span style={{"fontWeight": 700}}>Petya Panayotova Design Studio</span> е платформа, в която можете да
+                                        <span style={{ "fontWeight": 700 }}>Petya Panayotova Design Studio</span> е платформа, в която можете да
                                         добавяте изработените от вас картички за всякакви поводи. Дизайнерът Петя ще ги популяризира в
                                         мрежата, за да може творчеството ви да достигне до повече хора.&nbsp;
                                     </p>
@@ -29,6 +29,6 @@ const About = () => {
             </div>
         </section>
     );
-}
+};
 
 export default About;

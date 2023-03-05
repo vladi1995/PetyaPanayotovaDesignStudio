@@ -21,9 +21,9 @@ const Header = () => {
                             className="u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
                             to="/" style={{ padding: '10px 0px' }}>НАЧАЛО</NavLink>
                         </li>
-                        <li className="u-nav-item"><a
+                        <li className="u-nav-item"><NavLink
                             className="u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
-                            href="Register.html" style={{ padding: '10px 0px' }}>КАТАЛОГ</a>
+                            to="/cards/catalog" style={{ padding: '10px 0px' }}>КАТАЛОГ</NavLink>
                         </li>
                         <li className="u-nav-item"><a
                             className="u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"

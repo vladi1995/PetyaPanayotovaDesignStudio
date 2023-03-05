@@ -7,24 +7,29 @@ import Logout from "./components/auth/Logout";
 import { Routes, Route } from 'react-router-dom';
 import Register from "./components/auth/Register";
 import { AuthProvider } from "./contexts/AuthContext";
+import { CardProvider } from "./contexts/CardContext";
 import About from "./components/about/About";
 import CreateCard from "./components/cards/CreateCard";
+import CatalogCards from "./components/cards/CatalogCards";
+import CardDetails from "./components/cards/CardDetails";
 
 function App() {
   return (
     <>
       <AuthProvider>
         <Header />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth/register" element={<Register />} />
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/logout" element={<Logout />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/cards/create" element={<CreateCard />} />
-        </Routes>
-
+        <CardProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/auth/register" element={<Register />} />
+            <Route path="/auth/login" element={<Login />} />
+            <Route path="/auth/logout" element={<Logout />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/cards/create" element={<CreateCard />} />
+            <Route path="/cards/catalog" element={<CatalogCards />} />
+            <Route path="/cards/details/:cardId" element={<CardDetails />} />
+          </Routes>
+        </CardProvider>
         <Footer />
       </AuthProvider>
     </>

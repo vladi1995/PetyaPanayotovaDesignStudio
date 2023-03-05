@@ -1,8 +1,13 @@
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from './Card.module.css';
+import * as cardService from '../../services/cardService';
+import { CardContext } from "../../contexts/CardContext";
 
-const CreateCard = () => {
+const CreateCard = ({addGame}) => {
+    const navigate = useNavigate();
+    const {addCard} = useContext(CardContext);
+
     const [errors, setErrors] = useState({});
     const [values, setValues] = useState({
         name: '',
@@ -10,7 +15,7 @@ const CreateCard = () => {
         price: '',
         image: '',
         description: '',
-        category: '',
+        category: 'birthdayCard',
     });
 
     const onChange = (e) => {
@@ -47,6 +52,16 @@ const CreateCard = () => {
             [e.target.name]: !Number.isInteger(Number(values[e.target.name])) || values[e.target.name] <= 0,
         }));
     };
+
+    const createCardHandler = (e) => {
+        e.preventDefault();
+        cardService.create(values)
+        .then(result => {
+            addCard(result);
+            navigate('/cards/catalog');
+        });
+    };
+
     return (
         <section className="u-align-center u-clearfix u-grey-5 u-section-10" id="sec-7464">
             <div className="u-clearfix u-sheet u-sheet-1">
@@ -57,6 +72,7 @@ const CreateCard = () => {
                         style={{ padding: "10px" }}
                         source="email"
                         name="form"
+                        onSubmit={createCardHandler}
                     >
                         <div className="u-form-group u-form-name u-label-top">
                             <label htmlFor="name-3b9a" className="u-label">Име на картичката:</label>
@@ -150,9 +166,9 @@ const CreateCard = () => {
                                 name="description"
                                 className={
                                     errors.description ?
-                                    `${styles['error']} u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-5`
-                                    :
-                                    "u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-5"
+                                        `${styles['error']} u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-5`
+                                        :
+                                        "u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-5"
                                 }
                                 required="required"
                             />
@@ -176,19 +192,13 @@ const CreateCard = () => {
                             </div>
                         </div>
                         <div className="u-align-left u-form-group u-form-submit u-label-top">
-                            <a href="#" className="u-btn u-btn-submit u-button-style">Добавяне</a>
-                            <input type="submit" value="submit" className="u-form-control-hidden" />
+                            <input disabled={Object.values(errors).some(x => x == true) || Object.values(values).some(x => x === '' || x === 0)} type="submit" value="Добавяне" className="u-btn u-btn-submit u-button-style" />
                         </div>
-                        <div className="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-                        <div className="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try
-                            again. </div>
-                        <input type="hidden" value="" name="recaptchaResponse" />
-                        <input type="hidden" name="formServices" value="2dbdbb5f5f57a7961aaa0e0a2491c934" />
                     </form>
                 </div>
             </div>
         </section>
     );
-}
+};
 
 export default CreateCard;
