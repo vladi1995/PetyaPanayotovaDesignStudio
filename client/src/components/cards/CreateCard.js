@@ -9,6 +9,7 @@ const CreateCard = ({addGame}) => {
     const {addCard} = useContext(CardContext);
 
     const [errors, setErrors] = useState({});
+    
     const [values, setValues] = useState({
         name: '',
         count: '',
