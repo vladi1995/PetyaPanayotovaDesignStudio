@@ -12,6 +12,7 @@ import About from "./components/about/About";
 import CreateCard from "./components/cards/CreateCard";
 import CatalogCards from "./components/cards/CatalogCards";
 import CardDetails from "./components/cards/CardDetails";
+import CardEdit from "./components/cards/CardEdit";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/cards/create" element={<CreateCard />} />
             <Route path="/cards/catalog" element={<CatalogCards />} />
             <Route path="/cards/details/:cardId" element={<CardDetails />} />
+            <Route path="/cards/edit/:cardId" element={<CardEdit />} />
           </Routes>
         </CardProvider>
         <Footer />

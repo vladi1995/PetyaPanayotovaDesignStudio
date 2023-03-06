@@ -17,7 +17,7 @@ const Home = () => {
                                         повод запомнящ се ...</h2>
                                     <p className="u-align-center u-text u-text-3">Поздравителни картички за рожден ден, сватба, кръщене, св.
                                         Валентин ... етикети за вино и много други</p>
-                                    <a href="#" className="u-btn u-btn-round u-button-style u-radius-50 u-btn-1">КАТАЛОГ</a>
+                                    <NavLink to="/cards/catalog" className="u-btn u-btn-round u-button-style u-radius-50 u-btn-1">КАТАЛОГ</NavLink>
                                     <NavLink to="/auth/register" className="u-btn u-btn-round u-button-style u-radius-50 u-btn-2">РЕГИСТРАЦИЯ</NavLink>
                                 </div>
                             </div>
