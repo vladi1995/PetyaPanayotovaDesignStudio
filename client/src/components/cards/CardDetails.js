@@ -53,9 +53,9 @@ const CardDetails = () => {
 
                                     <h2 className="u-text u-text-default u-text-1">{card.name}</h2>
                                     <p className="u-text u-text-2">{card.description}</p>
-                                    <a href="https://nicepage.site"
+                                    <NavLink to={`/user/profile/${card._ownerId}`}
                                         className="u-active-none u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-top-left-radius-0 u-top-right-radius-0 u-btn-1">
-                                        {nameOfCreator || email}</a>
+                                        {nameOfCreator || email}</NavLink>
                                     <p className="u-text u-text-default u-text-3">Създал:</p>
 
                                     {imgSrc

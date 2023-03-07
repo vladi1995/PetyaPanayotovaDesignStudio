@@ -14,6 +14,7 @@ import CatalogCards from "./components/cards/CatalogCards";
 import CardDetails from "./components/cards/CardDetails";
 import CardEdit from "./components/cards/CardEdit";
 import CardDelete from "./components/cards/CardDelete";
+import UserProfile from "./components/user/UserProfile";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/cards/details/:cardId" element={<CardDetails />} />
             <Route path="/cards/edit/:cardId" element={<CardEdit />} />
             <Route path="/cards/delete/:cardId" element={<CardDelete />} />
+            <Route path="/user/profile/:userId" element={<UserProfile />} />
           </Routes>
         </CardProvider>
         <Footer />
