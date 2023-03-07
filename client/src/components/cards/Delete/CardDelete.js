@@ -1,10 +1,11 @@
 import { NavLink, useParams } from "react-router-dom";
-import * as cardService from '../../services/cardService';
+import * as cardService from '../../../services/cardService';
 import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
-import { CardContext } from "../../contexts/CardContext";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { CardContext } from "../../../contexts/CardContext";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import './Delete.css';
 
 const CardDelete = () => {
     const { cardId } = useParams();

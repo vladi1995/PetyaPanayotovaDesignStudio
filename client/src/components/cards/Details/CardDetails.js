@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import * as cardService from '../../services/cardService';
-import { AuthContext } from "../../contexts/AuthContext";
+import * as cardService from '../../../services/cardService';
+import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import './Details.css';
 
 const CardDetails = () => {
     const { cardId } = useParams();

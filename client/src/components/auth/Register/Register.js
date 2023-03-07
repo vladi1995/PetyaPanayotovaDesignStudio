@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
-import * as authService from '../../services/authService';
-
-import styles from './Auth.module.css';
+import { AuthContext } from "../../../contexts/AuthContext";
+import * as authService from '../../../services/authService';
+import './Register.css';
+import styles from '../Auth.module.css';
 
 const Register = () => {
     const navigate = useNavigate();

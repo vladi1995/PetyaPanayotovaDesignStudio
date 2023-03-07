@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import * as cardService from '../../services/cardService';
+import * as cardService from '../../../services/cardService';
 import { useContext } from "react";
-import { CardContext } from "../../contexts/CardContext";
+import { CardContext } from "../../../contexts/CardContext";
 import { useNavigate } from "react-router-dom";
-import styles from './Card.module.css';
+import styles from '../Card.module.css';
+import './Edit.css';
 
 const CardEdit = () => {
     const navigate = useNavigate();

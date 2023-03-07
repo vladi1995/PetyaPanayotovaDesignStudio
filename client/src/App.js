@@ -1,20 +1,20 @@
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
 import Home from "./components/home/Home";
-import Login from "./components/auth/Login";
-import Logout from "./components/auth/Logout";
+import Login from "./components/auth/Login/Login";
+import Logout from "./components/auth/Logout/Logout";
 
 import { Routes, Route } from 'react-router-dom';
-import Register from "./components/auth/Register";
+import Register from "./components/auth/Register/Register";
 import { AuthProvider } from "./contexts/AuthContext";
 import { CardProvider } from "./contexts/CardContext";
 import About from "./components/about/About";
-import CreateCard from "./components/cards/CreateCard";
-import CatalogCards from "./components/cards/CatalogCards";
-import CardDetails from "./components/cards/CardDetails";
-import CardEdit from "./components/cards/CardEdit";
-import CardDelete from "./components/cards/CardDelete";
-import UserProfile from "./components/user/UserProfile";
+import CreateCard from "./components/cards/Create/CreateCard";
+import CatalogCards from "./components/cards/Catalog/CatalogCards";
+import CardDetails from "./components/cards/Details/CardDetails";
+import CardEdit from "./components/cards/Edit/CardEdit";
+import CardDelete from "./components/cards/Delete/CardDelete";
+import UserProfile from "./components/user/UserInfo/UserProfile";
 
 function App() {
   return (

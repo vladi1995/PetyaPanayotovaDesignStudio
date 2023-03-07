@@ -1,3 +1,5 @@
+import './About.css';
+
 const About = () => {
     return (
         <section className="u-clearfix u-grey-5 u-section-4" id="sec-7e29">

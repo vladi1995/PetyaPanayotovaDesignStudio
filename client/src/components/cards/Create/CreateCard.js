@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from './Card.module.css';
-import * as cardService from '../../services/cardService';
-import { CardContext } from "../../contexts/CardContext";
+import styles from '../Card.module.css';
+import * as cardService from '../../../services/cardService';
+import { CardContext } from "../../../contexts/CardContext";
+import './Create.css';
 
 const CreateCard = () => {
     const navigate = useNavigate();
