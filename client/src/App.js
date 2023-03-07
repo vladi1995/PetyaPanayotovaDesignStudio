@@ -13,6 +13,7 @@ import CreateCard from "./components/cards/CreateCard";
 import CatalogCards from "./components/cards/CatalogCards";
 import CardDetails from "./components/cards/CardDetails";
 import CardEdit from "./components/cards/CardEdit";
+import CardDelete from "./components/cards/CardDelete";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/cards/catalog" element={<CatalogCards />} />
             <Route path="/cards/details/:cardId" element={<CardDetails />} />
             <Route path="/cards/edit/:cardId" element={<CardEdit />} />
+            <Route path="/cards/delete/:cardId" element={<CardDelete />} />
           </Routes>
         </CardProvider>
         <Footer />

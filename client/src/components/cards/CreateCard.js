@@ -4,7 +4,7 @@ import styles from './Card.module.css';
 import * as cardService from '../../services/cardService';
 import { CardContext } from "../../contexts/CardContext";
 
-const CreateCard = ({addGame}) => {
+const CreateCard = () => {
     const navigate = useNavigate();
     const {addCard} = useContext(CardContext);
 

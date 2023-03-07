@@ -15,15 +15,23 @@ export const CardProvider = ({
             });
     }, []);
 
-    const addCard = (gameData) => {
+    const addCard = (cardData) => {
         setCards(state => [
             ...state,
-            gameData,
+            cardData,
         ]);
     };
 
+    const editCard = (cardId, cardData) => {
+        setCards(state => state.map(x => x._id == cardId ? cardData : x));
+    }
+
+    const removeCard = (cardId) => {
+        setCards(state => state.filter(x => x._id !== cardId));
+    }
+
     return <CardContext.Provider value={{
-        cards, addCard
+        cards, addCard, editCard, removeCard
     }}>
         {children}
     </CardContext.Provider>;
