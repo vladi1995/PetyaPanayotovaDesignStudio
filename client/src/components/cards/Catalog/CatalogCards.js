@@ -1,8 +1,11 @@
-import CatalogItem from "./CatalogItem";
-import { CardContext } from "../../../contexts/CardContext";
-import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+
+import { CardContext } from "../../../contexts/CardContext";
+import { AuthContext } from "../../../contexts/AuthContext";
+
+import CatalogItem from "./CatalogItem";
+
 import './Catalog.css';
 
 const CatalogCards = () => {

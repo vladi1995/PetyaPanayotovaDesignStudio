@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import { AuthContext } from "../../../contexts/AuthContext";
 import * as cardService from '../../../services/cardService';
+
 import UserCard from "./UserCard";
-import { useParams } from "react-router-dom";
+
 import './UserInfo.css';
 
 const UserProfile = () => {

@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import { useContext } from "react";
+
 import { AuthContext } from "../../contexts/AuthContext";
+
 import { CiLogout } from 'react-icons/ci';
 import { FaCoins } from 'react-icons/fa';
 

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import * as cardService from '../../../services/cardService';
+import { useEffect, useState, useContext } from "react";
+import { useParams, NavLink } from "react-router-dom";
+
 import { AuthContext } from "../../../contexts/AuthContext";
-import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import * as cardService from '../../../services/cardService';
+
 import './Details.css';
 
 const CardDetails = () => {

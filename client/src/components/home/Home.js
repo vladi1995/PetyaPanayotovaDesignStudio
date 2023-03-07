@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+
 import { AuthContext } from "../../contexts/AuthContext";
+
 import './Home.css';
 
 const Home = () => {
