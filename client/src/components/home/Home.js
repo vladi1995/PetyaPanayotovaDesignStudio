@@ -6,8 +6,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 import './Home.css';
 
 const Home = () => {
-    const { user } = useContext(AuthContext);
-
+    const { user, userId } = useContext(AuthContext);
+    
     return (
         <section className="u-clearfix u-grey-5 u-section-1" id="sec-92f0">
             <div className="u-clearfix u-sheet u-sheet-1">

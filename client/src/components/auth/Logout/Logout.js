@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../../contexts/AuthContext';
@@ -17,7 +17,8 @@ const Logout = () => {
             .catch(() => {
                 navigate('/');
             });
-    });
+
+    }, []);
 
     return null;
 };

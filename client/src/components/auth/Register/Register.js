@@ -10,7 +10,7 @@ import styles from '../Auth.module.css';
 const Register = () => {
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
-    const {userLogin} = useContext(AuthContext);
+    const { userLogin } = useContext(AuthContext);
 
     const [values, setValues] = useState({
         email: '',
@@ -31,14 +31,14 @@ const Register = () => {
 
     const submitLoginHandler = (e) => {
         e.preventDefault();
-        
+
         authService.register(values.email, values.password, values.firstName, values.lastName, values.profileImageUrl, values.budget)
-        .then(authData => {
-            userLogin(authData);
-            navigate('/');
-        }).catch(() => {
-            navigate('/');
-        });
+            .then(authData => {
+                userLogin(authData);
+                navigate('/');
+            }).catch(() => {
+                navigate('/');
+            });
     };
 
     const validateEmail = (e, bound) => {
@@ -83,7 +83,7 @@ const Register = () => {
             <div className="u-clearfix u-sheet u-sheet-1">
                 <h2 className="u-text u-text-default u-text-1">Регистрация</h2>
                 <div className="u-form u-form-1">
-                    <form 
+                    <form
                         className="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
                         style={{ "padding": "10px" }}
                         name="form" onSubmit={submitLoginHandler}>

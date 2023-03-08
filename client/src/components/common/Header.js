@@ -1,13 +1,26 @@
 import { NavLink } from 'react-router-dom';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
+import * as userService from '../../services/userService';
 
 import { CiLogout } from 'react-icons/ci';
 import { FaCoins } from 'react-icons/fa';
 
 const Header = () => {
     const { user } = useContext(AuthContext);
+    const [money, setMoney] = useState([]);
+    let budgetOfPerson = [];
+
+    useEffect(() => {
+        userService.get()
+            .then(result => {
+                setMoney(result.filter(x => x._ownerId == user._id));
+            });
+    }, []);
+
+    budgetOfPerson = money.map(x => Number(x.budget));
+    const moneyOfPeron = budgetOfPerson[budgetOfPerson.length - 1];
 
     return (
         <header className="u-clearfix u-header u-palette-1-light-2 u-sticky u-sticky-ee31 u-header" id="sec-b022">
@@ -55,22 +68,22 @@ const Header = () => {
                 <div className="u-custom-menu u-nav-container">
                     <ul className="u-nav u-spacing-0 u-unstyled u-nav-3">
                         {user.email ?
-                        <>
-                            <li className="u-nav-item">
-                            <NavLink
-                                    className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                                    to="/auth/logout" style={{ padding: '0px 20px' }}>{user.email}</NavLink>
-                            </li>
-                            <li className="u-nav-item">
-                            <NavLink
-                                    className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                                    to="/auth/logout" style={{ padding: '0px 20px' }}>{user.budget || 0} лв. <FaCoins /></NavLink>
-                            </li>
-                            <li className="u-nav-item">
-                                <NavLink
-                                    className="u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                                    to="/auth/logout" style={{ padding: '0px 20px' }}> Изход <CiLogout /></NavLink>
-                            </li>
+                            <>
+                                <li className="u-nav-item">
+                                    <NavLink
+                                        className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
+                                        to="/auth/logout" style={{ padding: '0px 20px' }}>{user.email}</NavLink>
+                                </li>
+                                <li className="u-nav-item">
+                                    <NavLink
+                                        className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
+                                        to="/auth/logout" style={{ padding: '0px 20px' }}>{moneyOfPeron} лв. <FaCoins /></NavLink>
+                                </li>
+                                <li className="u-nav-item">
+                                    <NavLink
+                                        className="u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
+                                        to="/auth/logout" style={{ padding: '0px 20px' }}> Изход <CiLogout /></NavLink>
+                                </li>
                             </>
                             :
                             <>

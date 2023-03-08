@@ -169,7 +169,7 @@ const CardDetails = () => {
 
                                                             </form>
                                                         </div>
-                                                        : 
+                                                        :
                                                         <div style={{ marginLeft: '60px' }}>/Вече сте закупили от картичката!/</div>
                                                     }
                                                     {errorPositiveNumber && <div style={{ marginLeft: '65px' }}>/Закупените продукти трябва да са положително число!/</div>}
