@@ -4,6 +4,7 @@ import { useParams, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import * as cardService from '../../../services/cardService';
 import * as featuresService from '../../../services/featuresService';
+import * as userService from '../../../services/userService';
 import { objOfCategories } from '../../../utils/constants';
 
 import './Details.css';
@@ -23,12 +24,15 @@ const CardDetails = () => {
 
     const [allBoughtProducts, setAllBoughtProducts] = useState([]);
     const [valueCount, setValueCount] = useState(0);
+    const [isUserBought, setIsUserBought] = useState(false);
 
     useEffect(() => {
         featuresService.getAll()
             .then(result => {
                 setAllBoughtProducts(result);
                 const sumOfAllBought = Number(result.filter(x => x.cardId == cardId).map(x => Number(x.productsToBuy)).reduce((prev, next) => prev + next, 0));
+                const isBought = result.filter(x => x.cardId == cardId).some(x => x._ownerId == user._id);
+                setIsUserBought(isBought);
                 setValueCount(sumOfAllBought);
             });
     }, []);
@@ -68,9 +72,11 @@ const CardDetails = () => {
 
         featuresService.create({ cardId, productsToBuy })
             .then(result => {
+                user.budget -= Number(productsToBuy * card[0].price);
                 setValueCount(state => {
                     return Number(state) + Number(result.productsToBuy);
                 });
+                setIsUserBought(true);
             });
     }
 
@@ -134,35 +140,38 @@ const CardDetails = () => {
 
                                                 </> :
                                                 <>
-                                                    <div className="u-form u-form-1">
-                                                        <form
-                                                            className="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
-                                                            style={{ "padding": "15px" }}
-                                                            source="email"
-                                                            onSubmit={buyHandler}
-                                                        >
+                                                    {!isUserBought ?
+                                                        <div className="u-form u-form-1">
+                                                            <form
+                                                                className="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+                                                                style={{ "padding": "15px" }}
+                                                                source="email"
+                                                                onSubmit={buyHandler}
+                                                            >
 
-                                                            <div className="u-form-group u-label-top">
-                                                                <label htmlFor="name-558c" className="u-label">Купи</label>
-                                                                <input type="text"
-                                                                    placeholder="Брой"
-                                                                    id="name-558c"
-                                                                    name="numOfCards"
-                                                                    className="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10"
-                                                                    required="required"
-                                                                    value={productsToBuy}
-                                                                    onChange={onChangeBuyProducts}
-                                                                />
-                                                            </div>
+                                                                <div className="u-form-group u-label-top">
+                                                                    <label htmlFor="name-558c" className="u-label">Купи</label>
+                                                                    <input type="text"
+                                                                        placeholder="Брой"
+                                                                        id="name-558c"
+                                                                        name="numOfCards"
+                                                                        className="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10"
+                                                                        required="required"
+                                                                        value={productsToBuy}
+                                                                        onChange={onChangeBuyProducts}
+                                                                    />
+                                                                </div>
 
-                                                            <div className="u-form-group u-form-submit u-label-top">
-                                                                <input type="submit" value="Купи" className="u-btn u-btn-submit u-button-style" />
-                                                            </div>
+                                                                <div className="u-form-group u-form-submit u-label-top">
+                                                                    <input type="submit" value="Купи" className="u-btn u-btn-submit u-button-style" />
+                                                                </div>
 
 
-                                                        </form>
-                                                    </div>
-
+                                                            </form>
+                                                        </div>
+                                                        : 
+                                                        <div style={{ marginLeft: '60px' }}>/Вече сте закупили от картичката!/</div>
+                                                    }
                                                     {errorPositiveNumber && <div style={{ marginLeft: '65px' }}>/Закупените продукти трябва да са положително число!/</div>}
                                                     {errorBudget && <div style={{ marginLeft: '65px' }}>/Бюджетът ви не е достатъчен!/</div>}
                                                     {errorCount && <div style={{ marginLeft: '65px' }}>/Недостатъчна наличност!/</div>}
