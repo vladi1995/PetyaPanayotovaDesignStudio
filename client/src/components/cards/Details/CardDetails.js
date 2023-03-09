@@ -4,7 +4,6 @@ import { useParams, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import * as cardService from '../../../services/cardService';
 import * as featuresService from '../../../services/featuresService';
-import * as userService from '../../../services/userService';
 import { objOfCategories } from '../../../utils/constants';
 
 import './Details.css';
@@ -13,7 +12,7 @@ const CardDetails = () => {
     const { cardId } = useParams();
     const [card, setCard] = useState({});
 
-    const { user } = useContext(AuthContext);
+    const { user, lastPersonEntry } = useContext(AuthContext);
     const [loading, setIsLoading] = useState(true);
 
     const [productsToBuy, setProductsToBuy] = useState(0);
@@ -46,8 +45,6 @@ const CardDetails = () => {
             });
     }, []);
 
-    console.log(valueCount);
-
     const buyHandler = (e) => {
         e.preventDefault();
 
@@ -72,12 +69,15 @@ const CardDetails = () => {
 
         featuresService.create({ cardId, productsToBuy })
             .then(result => {
-                user.budget -= Number(productsToBuy * card[0].price);
                 setValueCount(state => {
                     return Number(state) + Number(result.productsToBuy);
                 });
                 setIsUserBought(true);
             });
+
+        const modifiedUserData = {
+            budget: Number(lastPersonEntry.budget) - productsToBuy * card[0].price,
+        };
     }
 
     const onChangeBuyProducts = (e) => {

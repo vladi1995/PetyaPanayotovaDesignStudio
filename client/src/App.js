@@ -22,22 +22,22 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <Header />
-        <CardProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/auth/register" element={<Register />} />
-            <Route path="/auth/login" element={<Login />} />
-            <Route path="/auth/logout" element={<Logout />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/cards/create" element={<CreateCard />} />
-            <Route path="/cards/catalog" element={<CatalogCards />} />
-            <Route path="/cards/details/:cardId" element={<CardDetails />} />
-            <Route path="/cards/edit/:cardId" element={<CardEdit />} />
-            <Route path="/cards/delete/:cardId" element={<CardDelete />} />
-            <Route path="/user/profile/:userId" element={<UserProfile />} />
-          </Routes>
-        </CardProvider>
+          <Header />
+          <CardProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/auth/register" element={<Register />} />
+              <Route path="/auth/login" element={<Login />} />
+              <Route path="/auth/logout" element={<Logout />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/cards/create" element={<CreateCard />} />
+              <Route path="/cards/catalog" element={<CatalogCards />} />
+              <Route path="/cards/details/:cardId" element={<CardDetails />} />
+              <Route path="/cards/edit/:cardId" element={<CardEdit />} />
+              <Route path="/cards/delete/:cardId" element={<CardDelete />} />
+              <Route path="/user/profile/:userId" element={<UserProfile />} />
+            </Routes>
+          </CardProvider>
         <Footer />
       </AuthProvider>
     </>
