@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { CardContext } from "../../../contexts/CardContext";
 import { AuthContext } from "../../../contexts/AuthContext";
 
 import CatalogItem from "./CatalogItem";
+import Pagination from "../../features/Pagination";
 
 import './Catalog.css';
 
@@ -12,16 +13,25 @@ const CatalogCards = () => {
     const { cards } = useContext(CardContext);
     const { user } = useContext(AuthContext);
 
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const postsPerPage = 6;
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+
+    const currentPosts = cards.slice(firstPostIndex, lastPostIndex);
+
     if (cards.length) {
         return (
             <section className="u-clearfix u-grey-5 u-section-6" id="sec-f49c">
                 <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
                     <div className="u-blog u-expanded-width u-blog-1">
                         <div className="u-repeater u-repeater-1">
-                            {cards.map(x => <CatalogItem key={x._id} item={x} />)}
+                            {currentPosts.map(x => <CatalogItem key={x._id} item={x} />)}
                         </div>
                     </div>
                 </div>
+                <Pagination totalPosts={cards.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
             </section>
         );
     } else {
