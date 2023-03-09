@@ -3,15 +3,19 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import { CardContext } from "../../../contexts/CardContext";
 import * as cardService from '../../../services/cardService';
+import * as featureService from '../../../services/featuresService';
 
 import './Edit.css';
 import styles from '../Card.module.css';
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const CardEdit = () => {
     const navigate = useNavigate();
+    const {user} = useContext(AuthContext);
     const [card, setCard] = useState({});
     const { cardId } = useParams();
     const { editCard } = useContext(CardContext);
+    const [reducedCount, setReducedCount] = useState(0);
 
     const [values, setValues] = useState({
         name: '',
@@ -33,13 +37,23 @@ const CardEdit = () => {
                     image: result.image,
                     description: result.description,
                     category: result.category,
+                    updated: result._updatedOn,
                 }));
             });
     }, [cardId]);
 
+
+    useEffect(() => {
+        featureService.getAll()
+            .then(result => {
+                setReducedCount(result.filter(x => x.cardId == cardId).map(x => Number(x.productsToBuy)).reduce((prev, next)=>prev+next,0));
+            });
+    }, []);
+
     const [errors, setErrors] = useState({});
 
     const onChange = (e) => {
+        setReducedCount(0);
         setValues(state => ({
             ...state,
             [e.target.name]: e.target.value,
@@ -117,7 +131,7 @@ const CardEdit = () => {
                         <div className="u-form-group u-label-top">
                             <label htmlFor="email-3b9a" className="u-label">Брой:</label>
                             <input
-                                type="text"
+                                type="number"
                                 placeholder="Въведете брой картички"
                                 id="email-3b9a"
                                 name="count"
@@ -128,7 +142,7 @@ const CardEdit = () => {
                                         "u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-2"
                                 }
                                 required="required"
-                                value={values.count}
+                                value={Number(values.count)-Number(reducedCount)}
                                 onChange={onChange}
                                 onBlur={validateCount}
                             />
@@ -137,7 +151,7 @@ const CardEdit = () => {
                         <div className="u-form-group u-label-top u-form-group-3">
                             <label htmlFor="text-f937" className="u-label">Цена за брой:</label>
                             <input
-                                type="text"
+                                type="number"
                                 placeholder="Въведете единична цена"
                                 id="text-f937"
                                 name="price"
