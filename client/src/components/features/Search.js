@@ -36,7 +36,7 @@ const Search = () => {
             isSubmitted: true,
         }));
 
-        setResult(cards.filter(x => (x.category == search.criteria || search.criteria == 'all') && x.name.includes(search.text)));
+        setResult(cards.filter(x => (x.category == search.criteria || search.criteria == 'all') && x.name.toLowerCase().includes(search.text.toLowerCase())));
     }
 
     return (
@@ -84,7 +84,7 @@ const Search = () => {
                                 </div>
                             </div>
                             <div className="u-align-left u-form-group u-form-submit u-label-top">
-                                <input type="submit" value="Добавяне" className="u-btn u-btn-submit u-button-style" />
+                                <input type="submit" value="Търсене" className="u-btn u-btn-submit u-button-style" />
                             </div>
                         </form>
                     </div>

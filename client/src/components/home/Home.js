@@ -2,11 +2,14 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/AuthContext";
+import { CardContext } from "../../contexts/CardContext";
 
 import './Home.css';
+import HomeCard from "./HomeCard";
 
 const Home = () => {
-    const { user, userId } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
+    const { cards } = useContext(CardContext);
     
     return (
         <section className="u-clearfix u-grey-5 u-section-1" id="sec-92f0">
@@ -21,7 +24,13 @@ const Home = () => {
                                     <p className="u-align-center u-text u-text-3">Поздравителни картички за рожден ден, сватба, кръщене, св.
                                         Валентин ... етикети за вино и много други</p>
                                     <NavLink to="/cards/catalog" className="u-btn u-btn-round u-button-style u-radius-50 u-btn-1">КАТАЛОГ</NavLink>
-                                    <NavLink to="/auth/register" className="u-btn u-btn-round u-button-style u-radius-50 u-btn-2">РЕГИСТРАЦИЯ</NavLink>
+                                    {user.email
+                                        ?
+                                        <NavLink to="/search" className="u-btn u-btn-round u-button-style u-radius-50 u-btn-2">ТЪРСЕНЕ</NavLink>
+                                        :
+                                        <NavLink to="/auth/register" className="u-btn u-btn-round u-button-style u-radius-50 u-btn-2">РЕГИСТРАЦИЯ</NavLink>
+                                    }
+
                                 </div>
                             </div>
                             <div
@@ -29,9 +38,17 @@ const Home = () => {
                                 src="" data-image-width="1920" data-image-height="1080">
                                 <div className="u-container-layout u-container-layout-2" src=""></div>
                             </div>
-
                         </div>
-
+                        <h4 className="u-align-center u-text u-text-3">Последно добавени картички</h4><hr />
+                        <section className="u-clearfix u-section-14" id="sec-c19f">
+                            <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                                <div className="u-expanded-width u-list u-list-1">
+                                    <div className="u-repeater u-repeater-1">
+                                        {cards.slice(-3).reverse().map(x => <HomeCard item={x} />)}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>

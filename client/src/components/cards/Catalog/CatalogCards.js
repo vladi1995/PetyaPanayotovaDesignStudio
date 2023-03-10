@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 import { CardContext } from "../../../contexts/CardContext";
 import { AuthContext } from "../../../contexts/AuthContext";
 
-import CatalogItem from "./CatalogItem";
 import Pagination from "../../features/Pagination";
+import HomeCard from "../../home/HomeCard";
 
 import './Catalog.css';
 
@@ -23,16 +23,19 @@ const CatalogCards = () => {
 
     if (cards.length) {
         return (
-            <section className="u-clearfix u-grey-5 u-section-6" id="sec-f49c">
+            <>
+            <section className="u-clearfix u-section-14 u-grey-5" id="sec-c19f">
+            <h4 className="u-align-center u-text u-text-3">Каталог</h4>
                 <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
-                    <div className="u-blog u-expanded-width u-blog-1">
+                    <div className="u-expanded-width u-list u-list-1">
                         <div className="u-repeater u-repeater-1">
-                            {currentPosts.map(x => <CatalogItem key={x._id} item={x} />)}
+                            {currentPosts.map(x => <HomeCard key={x._id} item={x} />)}
                         </div>
                     </div>
                 </div>
                 <Pagination totalPosts={cards.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
             </section>
+            </>
         );
     } else {
         return (
