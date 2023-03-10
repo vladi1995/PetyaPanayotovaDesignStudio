@@ -31,9 +31,9 @@ const Header = () => {
                             className="u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
                             to={`/user/profile/${user._id}`} style={{ padding: '10px 0px' }}>МОЯТ ПРОФИЛ</NavLink>
                         </li>
-                        <li className="u-nav-item"><a
+                        <li className="u-nav-item"><NavLink
                             className="u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
-                            href="Search.html" style={{ padding: '10px 0px' }}>ТЪРСЕНЕ</a>
+                            to="/search" style={{ padding: '10px 0px' }}>ТЪРСЕНЕ</NavLink>
                         </li>
                         <li className="u-nav-item"><NavLink to="/about"
                             className="u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"

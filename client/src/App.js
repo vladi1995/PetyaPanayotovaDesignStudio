@@ -16,6 +16,7 @@ import CardDetails from "./components/cards/Details/CardDetails";
 import CardEdit from "./components/cards/Edit/CardEdit";
 import CardDelete from "./components/cards/Delete/CardDelete";
 import UserProfile from "./components/user/UserInfo/UserProfile";
+import Search from './components/features/Search';
 import Footer from "./components/common/Footer";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
               <Route path="/cards/edit/:cardId" element={<CardEdit />} />
               <Route path="/cards/delete/:cardId" element={<CardDelete />} />
               <Route path="/user/profile/:userId" element={<UserProfile />} />
+              <Route path="/search" element={<Search />} />
             </Routes>
           </CardProvider>
         <Footer />
