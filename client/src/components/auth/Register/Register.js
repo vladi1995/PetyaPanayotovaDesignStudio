@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../../contexts/AuthContext";
 import * as authService from '../../../services/authService';
+import * as userService from '../../../services/userService';
 
 import './Register.css';
 import styles from '../Auth.module.css';
@@ -19,7 +20,7 @@ const Register = () => {
         password: '',
         repeatPassword: '',
         profileImageUrl: '',
-        // budget: 0,
+        budget: 0,
     });
 
     const onChange = (e) => {
@@ -35,6 +36,7 @@ const Register = () => {
         authService.register(values.email, values.password, values.firstName, values.lastName, values.profileImageUrl, values.budget)
             .then(authData => {
                 userLogin(authData);
+                userService.create({budget: authData.budget});
                 navigate('/');
             }).catch(() => {
                 navigate('/');
@@ -71,12 +73,12 @@ const Register = () => {
         }));
     };
 
-    // const validateBudget = (e) => {
-    //     setErrors(state => ({
-    //         ...state,
-    //         [e.target.name]: values[e.target.name] <= 0,
-    //     }));
-    // };
+    const validateBudget = (e) => {
+        setErrors(state => ({
+            ...state,
+            [e.target.name]: values[e.target.name] <= 0,
+        }));
+    };
 
     return (
         <section className="u-align-center u-clearfix u-grey-5 u-section-3" id="sec-fc27">
@@ -206,7 +208,7 @@ const Register = () => {
                             />
                             {errors.profileImageUrl && <span>/Линкът към снимката трябва да започва с http/https!/</span>}
                         </div>
-                        {/* <div className="u-form-group u-form-number u-form-number-layout-number u-label-top u-form-group-7">
+                        <div className="u-form-group u-form-number u-form-number-layout-number u-label-top u-form-group-7">
                             <label htmlFor="number-03dd" className="u-label">Въведете бюджет в лв.</label>
                             <div className="u-input-row" data-value="0">
                                 <input
@@ -228,7 +230,7 @@ const Register = () => {
                                 />
                                 {errors.budget && <span> /Бюджетът трябва да е по-голям от 0лв!/</span>}
                             </div>
-                        </div> */}
+                        </div>
                         <div className="u-align-left u-form-group u-form-submit u-label-top">
                             <input disabled={Object.values(errors).some(x => x == true) || Object.values(values).some(x => x === '' || x === 0)} type="submit" value="Регистрация" className="u-btn u-btn-submit u-button-style" />
                         </div>

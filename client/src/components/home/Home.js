@@ -10,7 +10,7 @@ import HomeCard from "./HomeCard";
 const Home = () => {
     const { user } = useContext(AuthContext);
     const { cards } = useContext(CardContext);
-    
+
     return (
         <section className="u-clearfix u-grey-5 u-section-1" id="sec-92f0">
             <div className="u-clearfix u-sheet u-sheet-1">
@@ -40,19 +40,31 @@ const Home = () => {
                             </div>
                         </div>
                         <h4 className="u-align-center u-text u-text-3">Последно добавени картички</h4><hr />
-                        <section className="u-clearfix u-section-14" id="sec-c19f">
-                            <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
-                                <div className="u-expanded-width u-list u-list-1">
-                                    <div className="u-repeater u-repeater-1">
-                                        {cards.slice(-3).reverse().map(x => <HomeCard item={x} />)}
+                        {cards.length ?
+                            <>
+                                <section className="u-clearfix u-section-14" id="sec-c19f">
+                                    <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                                        <div className="u-expanded-width u-list u-list-1">
+                                            <div className="u-repeater u-repeater-1">
+                                                {cards.slice(-3).reverse().map(x => <HomeCard key={x._id} item={x} />)}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </section>
+                                </section>
+                            </>
+                            :
+                            <div className="u-repeater u-repeater-1">
+                            <h2>Няма данни</h2>
+                            <p>Няма добавени картички! Моля опитайте по-късно или добавете картичка сами.</p>
+                            <img src="https://shopcaymanislands.com/public/front/images/empty-cart.png" alt="notFoundPicture" />
+                        </div>
+                        }
                     </div>
                 </div>
             </div>
+            <br />
         </section>
+
     );
 };
 

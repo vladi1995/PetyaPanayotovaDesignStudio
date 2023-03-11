@@ -4,6 +4,7 @@ import { useParams, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import * as cardService from '../../../services/cardService';
 import * as featuresService from '../../../services/featuresService';
+import * as userService from '../../../services/userService';
 import { objOfCategories } from '../../../utils/constants';
 
 import './Details.css';
@@ -27,12 +28,14 @@ const CardDetails = () => {
 
     const [likes, setLikes] = useState([]);
 
+    const { userInfo } = useContext(AuthContext);
+
     const getAllLikes = () => {
         return featuresService.getAllLikes()
             .then(result => {
                 setLikes(result.filter(x => x.cardId == cardId));
             });
-    }
+    };
 
     useEffect(() => {
         featuresService.getAll()
@@ -84,22 +87,24 @@ const CardDetails = () => {
                     return Number(state) + Number(result.productsToBuy);
                 });
                 setIsUserBought(true);
+
+                userService.edit(userInfo[0]._id, {budget: Number(userInfo[0].budget) - Number(card[0].price) * Number(productsToBuy)});
             });
 
         // const modifiedUserData = {
         //     budget: Number(lastPersonEntry.budget) - productsToBuy * card[0].price,
         // };
-    }
+    };
 
     const onChangeBuyProducts = (e) => {
         setProductsToBuy(e.target.value);
-    }
+    };
 
     const likeHandler = (e) => {
         // e.preventDefault();
         featuresService.createLike({ email: user.email, cardId })
             .then(res => getAllLikes());
-    }
+    };
 
     return (
         <>
@@ -210,7 +215,7 @@ const CardDetails = () => {
                                     </div>
 
                                     <div className="u-container-style u-image u-layout-cell u-right-cell u-size-20 u-image-1">
-                                        <img src={card[0].image} style={{ width: "400px", height: "600px", objectFit: "cover" }}></img>
+                                        <img src={card[0].image} style={{ width: "400px", height: "600px", objectFit: "cover" }} />
                                     </div>
                                 </div>
                             </div>

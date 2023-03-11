@@ -40,7 +40,7 @@ function App() {
               <Route path="/search" element={<Search />} />
             </Routes>
           </CardProvider>
-        <Footer />
+          <Footer />
       </AuthProvider>
     </>
   );

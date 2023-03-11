@@ -5,10 +5,12 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 import { CiLogout } from 'react-icons/ci';
 import { FaCoins } from 'react-icons/fa';
+import { UserContext } from '../../contexts/UserContext';
 
 const Header = () => {
-    const {user} = useContext(AuthContext);
-
+    const { user } = useContext(AuthContext);
+    const { userInfo } = useContext(AuthContext);
+    console.log(userInfo);
     return (
         <header className="u-clearfix u-header u-palette-1-light-2 u-sticky u-sticky-ee31 u-header" id="sec-b022">
             <nav className="u-align-center u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -61,11 +63,13 @@ const Header = () => {
                                         className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
                                         to="/auth/logout" style={{ padding: '0px 20px' }}>{user.email}</NavLink>
                                 </li>
-                                {/* <li className="u-nav-item">
-                                    <NavLink
-                                        className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                                        to="/auth/logout" style={{ padding: '0px 20px' }}>{budget} лв. <FaCoins /></NavLink>
-                                </li> */}
+                                {userInfo.length &&
+                                    <li className="u-nav-item">
+                                        <NavLink
+                                            className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
+                                            to="/auth/logout" style={{ padding: '0px 20px' }}>{userInfo[0].budget} лв. <FaCoins /></NavLink>
+                                    </li>
+                                }
                                 <li className="u-nav-item">
                                     <NavLink
                                         className="u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
