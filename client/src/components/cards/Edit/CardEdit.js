@@ -92,7 +92,7 @@ const CardEdit = () => {
         e.preventDefault();
         cardService.edit(cardId, values)
         .then(result => {
-            editCard(result);
+            editCard(cardId, result);
             navigate(`/cards/details/${cardId}`);
         });
     };

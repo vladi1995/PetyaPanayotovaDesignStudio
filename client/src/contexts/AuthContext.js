@@ -14,7 +14,11 @@ export const AuthProvider = ({
     const userLogin = (authData) => {
         setAuth(authData);
         userService.getAll()
-            .then(result => setUserInfo(result.filter(x => x._ownerId == authData._id)));
+            .then(result => setUserInfo(result.filter(x => x._ownerId === authData._id)));
+    };
+
+    const userEdit = (userEdittedInfo) => {
+        setUserInfo(state => state.map(x => x._id === userEdittedInfo._id ? userEdittedInfo : x));
     };
 
     const userLogout = () => {
@@ -27,6 +31,7 @@ export const AuthProvider = ({
         userLogin,
         userLogout,
         userInfo,
+        userEdit,
         isAuthenticated: !!auth.accessToken,
     }}>
         {children}

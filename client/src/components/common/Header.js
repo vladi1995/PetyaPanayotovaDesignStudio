@@ -10,7 +10,7 @@ import { UserContext } from '../../contexts/UserContext';
 const Header = () => {
     const { user } = useContext(AuthContext);
     const { userInfo } = useContext(AuthContext);
-    console.log(userInfo);
+    
     return (
         <header className="u-clearfix u-header u-palette-1-light-2 u-sticky u-sticky-ee31 u-header" id="sec-b022">
             <nav className="u-align-center u-menu u-menu-dropdown u-offcanvas u-menu-1">

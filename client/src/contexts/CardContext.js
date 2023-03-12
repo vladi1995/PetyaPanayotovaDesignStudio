@@ -24,12 +24,12 @@ export const CardProvider = ({
     };
 
     const editCard = (cardId, cardData) => {
-        setCards(state => state.map(x => x._id == cardId ? cardData : x));
-    }
+        return setCards(state => state.map(x => x._id === cardId ? cardData : x));
+    };
 
     const removeCard = (cardId) => {
-        setCards(state => state.filter(x => x._id !== cardId));
-    }
+        return setCards(state => state.filter(x => x._id !== cardId));
+    };
 
     return <CardContext.Provider value={{
         cards, addCard, editCard, removeCard
