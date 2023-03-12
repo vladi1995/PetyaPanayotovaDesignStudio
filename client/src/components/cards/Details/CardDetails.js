@@ -5,9 +5,10 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import * as cardService from '../../../services/cardService';
 import * as featuresService from '../../../services/featuresService';
 import * as userService from '../../../services/userService';
-import { objOfCategories } from '../../../utils/constants';
+
 import Comments from "../../features/Comments";
 
+import { objOfCategories } from '../../../utils/constants';
 import './Details.css';
 
 const CardDetails = () => {
@@ -30,7 +31,6 @@ const CardDetails = () => {
     const [likes, setLikes] = useState([]);
 
     const { userInfo, userEdit } = useContext(AuthContext);
-    const [comments, setComments] = useState([]);
 
     const getAllLikes = () => {
         return featuresService.getAllLikes()

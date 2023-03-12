@@ -1,10 +1,12 @@
-import './Comments.css';
-import * as commentService from '../../services/commentService';
-import * as userService from '../../services/userService';
 import { useContext, useEffect, useState } from 'react';
-import CommentItem from './CommentItem';
-import CommentForm from './CommentForm';
+
 import { AuthContext } from '../../contexts/AuthContext';
+import * as commentService from '../../services/commentService';
+
+import CommentForm from './CommentForm';
+import CommentItem from './CommentItem';
+
+import './Comments.css';
 
 const Comments = ({ card }) => {
     const [comments, setComments] = useState([]);
