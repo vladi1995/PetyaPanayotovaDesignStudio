@@ -6,7 +6,6 @@ import * as cardService from '../../../services/cardService';
 import * as featuresService from '../../../services/featuresService';
 import * as userService from '../../../services/userService';
 import { objOfCategories } from '../../../utils/constants';
-import CommentForm from "../../features/CommentForm";
 import Comments from "../../features/Comments";
 
 import './Details.css';
@@ -31,6 +30,7 @@ const CardDetails = () => {
     const [likes, setLikes] = useState([]);
 
     const { userInfo, userEdit } = useContext(AuthContext);
+    const [comments, setComments] = useState([]);
 
     const getAllLikes = () => {
         return featuresService.getAllLikes()
@@ -222,8 +222,7 @@ const CardDetails = () => {
                             </div>
                         </div>
                     </section>
-                    <Comments cardId={cardId} />
-                    <CommentForm cardId={cardId} />
+                    <Comments card={card} />
                 </>
             }
         </>

@@ -36,7 +36,7 @@ const Register = () => {
         authService.register(values.email, values.password, values.firstName, values.lastName, values.profileImageUrl, values.budget)
             .then(authData => {
                 userLogin(authData);
-                userService.create({budget: authData.budget});
+                userService.create(authData);
                 navigate('/');
             }).catch(() => {
                 navigate('/');

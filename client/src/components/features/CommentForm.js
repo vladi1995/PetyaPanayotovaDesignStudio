@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import * as commentService from '../../services/commentService';
 
 import './Comments.css';
-const CommentForm = ({cardId}) => {
+const CommentForm = ({ cardId, addNewComment }) => {
     const [comment, setComment] = useState('');
+    const {user} = useContext(AuthContext);
 
     const addCommentHandler = (e) => {
         e.preventDefault();
-        commentService.create(cardId, comment);
+        commentService.create(cardId, comment, user)
+            .then(result => addNewComment(result));
     };
 
     const onChangeComment = (e) => {
@@ -24,7 +27,7 @@ const CommentForm = ({cardId}) => {
                         style={{ "padding": "15px" }}
                         source="email"
                         onSubmit={addCommentHandler}
-                        >
+                    >
                         <div className="u-form-group u-form-message u-label-none">
                             <label htmlFor="email-ef64" className="u-label">Email</label>
                             <textarea
