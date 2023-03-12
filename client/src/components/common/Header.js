@@ -31,15 +31,15 @@ const Header = () => {
                         </li>
                         <li className="u-nav-item"><NavLink
                             className="u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                            to={`/user/profile/${user._id}`} style={{ padding: '10px 0px' }}>МОЯТ ПРОФИЛ</NavLink>
-                        </li>
-                        <li className="u-nav-item"><NavLink
-                            className="u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
                             to="/search" style={{ padding: '10px 0px' }}>ТЪРСЕНЕ</NavLink>
                         </li>
                         <li className="u-nav-item"><NavLink to="/about"
                             className="u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
                             style={{ padding: '10px 0px' }}>ЗА СТРАНИЦАТА</NavLink>
+                        </li>
+                        <li className="u-nav-item"><NavLink
+                            className="u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
+                            to={`/user/profile/${user._id}`} style={{ padding: '10px 0px' }}>МОЯТ ПРОФИЛ</NavLink>
                         </li>
                         <li className="u-nav-item"><NavLink to="/cards/create"
                             className="u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
@@ -61,13 +61,13 @@ const Header = () => {
                                 <li className="u-nav-item">
                                     <NavLink
                                         className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                                        to="/auth/logout" style={{ padding: '0px 20px' }}>{user.email}</NavLink>
+                                        to={`/user/profile/${user._id}`} style={{ padding: '0px 20px' }}>{user.firstName}</NavLink>
                                 </li>
                                 {userInfo.length &&
                                     <li className="u-nav-item">
                                         <NavLink
                                             className="u-border-2 u-border-active-grey-30 u-border-grey-30 u-border-hover-grey-30 u-border-no-bottom u-border-no-left u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                                            to="/auth/logout" style={{ padding: '0px 20px' }}>{userInfo[0].budget} лв. <FaCoins /></NavLink>
+                                            to={`/user/profile/${user._id}`} style={{ padding: '0px 20px' }}>{userInfo[0].budget} лв. <FaCoins /></NavLink>
                                     </li>
                                 }
                                 <li className="u-nav-item">

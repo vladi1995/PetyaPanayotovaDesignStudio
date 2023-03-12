@@ -27,9 +27,9 @@ const Comments = ({ card }) => {
     return (
         <>
             <section className="u-clearfix u-grey-5 u-section-8" id="sec-feda">
-                {comments.map(x => <CommentItem comment={x} />)}
+                {comments.map(x => <CommentItem key={x._id} comment={x} />)}
             </section>
-            {user._id !== card[0]._ownerId && <CommentForm cardId={card[0]._id} addNewComment={addNewComment} />}
+            {(user._id !== card[0]._ownerId && user.email) && <CommentForm key={'form'} cardId={card[0]._id} addNewComment={addNewComment} />}
             
         </>
     );
