@@ -6,7 +6,7 @@ import * as cardService from '../../../services/cardService';
 import * as featuresService from '../../../services/featuresService';
 import * as userService from '../../../services/userService';
 
-import Comments from "../../features/Comments";
+import Comments from "../../features/Comments/Comments";
 
 import { objOfCategories } from '../../../utils/constants';
 import './Details.css';
@@ -15,7 +15,7 @@ const CardDetails = () => {
     const { cardId } = useParams();
     const [card, setCard] = useState({});
 
-    const { user, lastPersonEntry } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [loading, setIsLoading] = useState(true);
 
     const [productsToBuy, setProductsToBuy] = useState(0);
@@ -128,7 +128,7 @@ const CardDetails = () => {
 
                                                 {card[0].user.profileImageUrl
                                                     ?
-                                                    <img src={card[0].user.profileImageUrl} style={{ maxWidth: '100px', marginLeft: '60px', marginTop: '10px' }} alt="userPhoto" />
+                                                    <img src={card[0].user.profileImageUrl} style={{ maxWidth: '100px', marginLeft: '60px', marginTop: '10px', borderRadius: '10px' }} alt="userPhoto" />
                                                     :
                                                     <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" style={{ maxWidth: '100px', marginLeft: '60px', marginTop: '10px' }} alt="userPhoto" />
                                                 }

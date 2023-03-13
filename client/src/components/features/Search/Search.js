@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import { CardContext } from "../../contexts/CardContext";
-import { AuthContext } from "../../contexts/AuthContext";
+import { CardContext } from "../../../contexts/CardContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 
-import CatalogItem from "../cards/Catalog/CatalogItem";
+import CatalogItem from "../../cards/Catalog/CatalogItem";
 
 import './Search.css';
 import './Create.css';
@@ -103,7 +103,6 @@ const Search = () => {
                             </div>
                         </>
                         :
-
                         <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
                             <div className="u-blog u-expanded-width u-blog-1">
                                 <div className="u-repeater u-repeater-1">

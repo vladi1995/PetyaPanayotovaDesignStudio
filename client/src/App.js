@@ -16,7 +16,7 @@ import CardDetails from "./components/cards/Details/CardDetails";
 import CardEdit from "./components/cards/Edit/CardEdit";
 import CardDelete from "./components/cards/Delete/CardDelete";
 import UserProfile from "./components/user/UserInfo/UserProfile";
-import Search from './components/features/Search';
+import Search from './components/features/Search/Search';
 import Footer from "./components/common/Footer";
 
 function App() {

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 
-import { AuthContext } from '../../contexts/AuthContext';
-import * as commentService from '../../services/commentService';
+import { AuthContext } from '../../../contexts/AuthContext';
+import * as commentService from '../../../services/commentService';
 
 import CommentForm from './CommentForm';
 import CommentItem from './CommentItem';

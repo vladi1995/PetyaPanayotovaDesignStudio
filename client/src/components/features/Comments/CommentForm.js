@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 
-import { AuthContext } from "../../contexts/AuthContext";
-import * as commentService from '../../services/commentService';
+import { AuthContext } from "../../../contexts/AuthContext";
+import * as commentService from '../../../services/commentService';
 
 import './Comments.css';
 const CommentForm = ({ cardId, addNewComment }) => {
