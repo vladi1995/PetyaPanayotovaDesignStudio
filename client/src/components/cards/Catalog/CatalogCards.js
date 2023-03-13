@@ -33,7 +33,7 @@ const CatalogCards = () => {
                         </div>
                     </div>
                 </div>
-                <Pagination totalPosts={cards.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
+                <Pagination totalPosts={cards.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
             </section>
             </>
         );

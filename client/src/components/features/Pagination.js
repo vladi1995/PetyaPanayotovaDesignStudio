@@ -1,4 +1,7 @@
-const Pagination = ({totalPosts, postsPerPage, setCurrentPage}) => {
+import { NavLink } from "react-router-dom";
+import styles from './Pagination.module.css';
+
+const Pagination = ({totalPosts, postsPerPage, setCurrentPage, currentPage}) => {
     let pages = [];
 
     for (let i = 1; i <= Math.ceil(totalPosts/postsPerPage); i++) {
@@ -6,9 +9,9 @@ const Pagination = ({totalPosts, postsPerPage, setCurrentPage}) => {
     }
 
     return (
-        <div>
+        <div className={styles['container']}>
             {pages.map((page, index) => {
-                return <button key={index} onClick={() => setCurrentPage(page)}>{page}</button>
+                return <button className={page === currentPage ? styles['active'] : styles['notActive']}  key={index} onClick={() => setCurrentPage(page)}>{page}</button>
             })}
         </div>
     );
