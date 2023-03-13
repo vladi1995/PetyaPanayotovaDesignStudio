@@ -100,7 +100,6 @@ const CardDetails = () => {
     };
 
     const likeHandler = (e) => {
-        // e.preventDefault();
         featuresService.createLike({ email: user.email, cardId })
             .then(res => getAllLikes());
     };

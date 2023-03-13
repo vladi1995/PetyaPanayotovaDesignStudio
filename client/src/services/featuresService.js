@@ -9,4 +9,9 @@ export const create = (cardId) => request.post(baseUrlBuying, cardId);
 
 export const getAllLikes = () => request.get(baseUrlLike);
 
+export const getLikesPerCard = (cardId) => {
+    const search = encodeURIComponent(`_ownerId="${cardId}"`);
+    return request.get(`${baseUrlLike}?where=${search}`);
+};
+
 export const createLike = (userId) => request.post(baseUrlLike, userId);

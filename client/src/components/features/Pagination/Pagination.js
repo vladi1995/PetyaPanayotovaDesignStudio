@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import styles from './Pagination.module.css';
 
 const Pagination = ({totalPosts, postsPerPage, setCurrentPage, currentPage}) => {
